@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -40,15 +40,15 @@ class Hospital
             switch(userChoice)
             {
                 case CommandFilterName:
-                    FilterName();
+                    OrderByName();
                     break;
 
                 case CommandFilterAge:
-                    FilterAge();
+                    OrderByAge();
                     break;
 
                 case CommandFilterDisease:
-                    FilterDisease();
+                    ShowFilteredDiseases();
                     break;
 
                 case CommandExit:
@@ -80,21 +80,21 @@ class Hospital
         Console.ReadKey();
     }
 
-    private void FilterName()
+    private void OrderByName()
     {
         var filteredName = _patients.OrderBy(patient => patient.FullName);
 
         ShowPatients(filteredName.ToList());
     }
 
-    private void FilterAge()
+    private void OrderByAge()
     {
         var filteredAge = _patients.OrderBy(patient => patient.Age);
 
         ShowPatients(filteredAge.ToList());
     }
 
-    private void FilterDisease()
+    private void ShowFilteredDiseases()
     {
         Console.WriteLine("Для сортировки пациентов по болезни, введите название заболевания: ");
         string disease = Console.ReadLine();
