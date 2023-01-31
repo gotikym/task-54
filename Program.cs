@@ -22,8 +22,8 @@ class Hospital
 
     public void Work()
     {
-        const string CommandFilterName = "1";
-        const string CommandFilterAge = "2";
+        const string CommandOrderByName = "1";
+        const string CommandOrderByAge = "2";
         const string CommandFilterDisease = "3";
         const string CommandExit = "4";
         bool isExit = false;
@@ -31,19 +31,19 @@ class Hospital
         while(isExit == false)
         {
             Console.Clear();
-            Console.WriteLine("Отсортировать всех пациентов по фио - " + CommandFilterName);
-            Console.WriteLine("Отсортировать всех пациентов по возрасту - " + CommandFilterAge);
+            Console.WriteLine("Отсортировать всех пациентов по фио - " + CommandOrderByName);
+            Console.WriteLine("Отсортировать всех пациентов по возрасту - " + CommandOrderByAge);
             Console.WriteLine("Вывести пациентов с определенным заболеванием - " + CommandFilterDisease);
             Console.WriteLine("выйти - " + CommandExit);
             string userChoice = Console.ReadLine();
 
             switch(userChoice)
             {
-                case CommandFilterName:
+                case CommandOrderByName:
                     OrderByName();
                     break;
 
-                case CommandFilterAge:
+                case CommandOrderByAge:
                     OrderByAge();
                     break;
 
@@ -82,16 +82,16 @@ class Hospital
 
     private void OrderByName()
     {
-        var filteredName = _patients.OrderBy(patient => patient.FullName);
+        var orderedName = _patients.OrderBy(patient => patient.FullName);
 
-        ShowPatients(filteredName.ToList());
+        ShowPatients(orderedName.ToList());
     }
 
     private void OrderByAge()
     {
-        var filteredAge = _patients.OrderBy(patient => patient.Age);
+        var orderedAge = _patients.OrderBy(patient => patient.Age);
 
-        ShowPatients(filteredAge.ToList());
+        ShowPatients(orderedAge.ToList());
     }
 
     private void ShowFilteredDiseases()
